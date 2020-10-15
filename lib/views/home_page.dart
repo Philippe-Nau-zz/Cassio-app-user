@@ -20,17 +20,18 @@ class HomePage extends GetView<HomePageController> {
             width: double.infinity,
             height: double.infinity,
             child: LayoutBuilder(
-              builder: (context, constraints) => Column(
-                children: [
-                  Header(),
-                  SizedBox(height: 10),
-                  UserInfoCard(),
-                  SizedBox(height: 40),
-                  Container(
-                      alignment: Alignment.center,
-                      height: constraints.maxHeight - 290,
-                      child: MainGridView()),
-                ],
+              builder: (context, constraints) => SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Header(),
+                    SizedBox(height: 10),
+                    UserInfoCard(),
+                    Container(
+                        alignment: Alignment.center,
+                        height: constraints.maxHeight - 280,
+                        child: MainGridView()),
+                  ],
+                ),
               ),
             ),
           ),

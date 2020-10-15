@@ -16,6 +16,7 @@ class UserInfoCard extends StatelessWidget {
           Get.toNamed('/tabviewpages', arguments: 0);
         },
         child: Container(
+          height: 160,
           padding: EdgeInsets.all(10),
           child: Column(
             children: [

@@ -8,7 +8,7 @@ class MainGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.all(20),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 1,
