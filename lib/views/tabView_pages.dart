@@ -15,6 +15,7 @@ class TabViewPages extends StatelessWidget {
         length: _items.length,
         initialIndex: _.initialIndex,
         child: Scaffold(
+          backgroundColor: Color(0xfff5f6fa),
           appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
@@ -28,7 +29,7 @@ class TabViewPages extends StatelessWidget {
               TabItem(
                 title: 'Perfil',
                 icon: Image.asset(
-                  'assets/images/head.png',
+                  'assets/images/user-1.png',
                 ),
               ),
               TabItem(
@@ -58,8 +59,8 @@ class TabViewPages extends StatelessWidget {
             ],
             color: Colors.white70,
             elevation: 5,
-            height: 60,
-            top: -10,
+            height: 50,
+            top: -8,
             style: TabStyle.titled,
           ),
         ),

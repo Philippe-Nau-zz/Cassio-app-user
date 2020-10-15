@@ -13,8 +13,8 @@ class SurgeriesPage extends GetView<SurgeriesController> {
       child: LayoutBuilder(
         builder: (context, constraints) => ListViewPages(
           height: constraints.maxHeight,
-          heightListview: constraints.maxHeight - 36,
-          heightTitle: 30,
+          heightListview: constraints.maxHeight - 56,
+          heightTitle: 40,
           onTap: () {},
           itemList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
           title: 'Procedimentos cirurgicos',

@@ -17,6 +17,7 @@ class CardMainGridView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) => Card(
         elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: InkWell(
           onTap: () {
             Get.toNamed(
