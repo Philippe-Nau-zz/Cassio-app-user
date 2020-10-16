@@ -23,7 +23,7 @@ class AllergiesPage extends StatelessWidget {
                 heightTitle: 40,
                 onTap: () => _controllerDialog.showDialog(
                   title: 'Adicionar Remédios Alérgicos',
-                  listName: 'Drug Allergies',
+                  listNamePage: 'Drug Allergies',
                 ),
                 // ignore: invalid_use_of_protected_member
                 itemList: _.allergiesDrugs.value,
@@ -38,7 +38,7 @@ class AllergiesPage extends StatelessWidget {
                 heightTitle: 40,
                 onTap: () => _controllerDialog.showDialog(
                     title: 'Adicionar Alimentos Alérgicos',
-                    listName: 'Food allergies'),
+                    listNamePage: 'Food allergies'),
                 // ignore: invalid_use_of_protected_member
                 itemList: Get.find<AllergiesController>().allergiesFoods.value,
                 title: 'Alergia a alimentos',

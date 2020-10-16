@@ -25,7 +25,7 @@ class DrugsPage extends GetView<DrugsController> {
                   heightTitle: 40,
                   onTap: () => _controllerDialog.showDialog(
                       title: 'Adicionar Remédios Continuos',
-                      listName: 'Continuous Drugs'),
+                      listNamePage: 'Continuous Drugs'),
                   // ignore: invalid_use_of_protected_member
                   itemList: _.continuousDrugs.value,
                   title: 'Remédios continuos',
@@ -39,7 +39,7 @@ class DrugsPage extends GetView<DrugsController> {
                   heightTitle: 40,
                   onTap: () => _controllerDialog.showDialog(
                       title: 'Adicionar Remédios temporarios',
-                      listName: 'Temporary Drugs'),
+                      listNamePage: 'Temporary Drugs'),
                   // ignore: invalid_use_of_protected_member
                   itemList: Get.find<DrugsController>().temporaryDrugs.value,
                   title: 'Remédios temporarios',

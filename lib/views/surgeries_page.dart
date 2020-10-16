@@ -22,7 +22,8 @@ class SurgeriesPage extends GetView<SurgeriesController> {
               heightListview: constraints.maxHeight - 56,
               heightTitle: 40,
               onTap: () => _controllerDialog.showDialog(
-                  title: 'Adicionar Procedimentos CIrurgicos'),
+                  title: 'Adicionar Procedimentos CIrurgicos',
+                  listNamePage: 'Surgeries'),
               // ignore: invalid_use_of_protected_member
               itemList: _.surgeries.value,
               title: 'Procedimentos cirurgicos',

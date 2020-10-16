@@ -15,6 +15,7 @@ class TabViewPages extends StatelessWidget {
         length: _items.length,
         initialIndex: _.initalIndex.value.toInt(),
         child: Scaffold(
+          resizeToAvoidBottomPadding: false,
           backgroundColor: Color(0xfff5f6fa),
           appBar: AppBar(
             elevation: 0,

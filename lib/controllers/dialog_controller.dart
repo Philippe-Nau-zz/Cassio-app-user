@@ -12,63 +12,70 @@ class DialogController extends GetxController {
   final _pathologiesController = Get.put(PathologiesController());
   final _surgeriesController = Get.put(SurgeriesController());
 
-  RxList _items = [].obs;
-  List get items => _items;
-
+  RxList items = [].obs;
   RxDouble heightListview = 0.0.obs;
 
-  RxString _listName = ''.obs;
-  String get listName => _listName.value;
+  RxString listName = ''.obs;
 
   TextEditingController dialogTextController = TextEditingController();
 
   addItem() {
-    _items.add(dialogTextController.text);
+    items.add(dialogTextController.text);
     dialogTextController.clear();
   }
 
   addToListView() {
-    switch (listName) {
+    switch (listName.value) {
       case 'Drug Allergies':
         {
-          _allergiesController.addAllergiesDrugs(items);
+          // ignore: invalid_use_of_protected_member
+          _allergiesController.addAllergiesDrugs(items.value);
         }
         break;
       case 'Food allergies':
         {
-          _allergiesController.addAllergiesFoods(items);
+          // ignore: invalid_use_of_protected_member
+          _allergiesController.addAllergiesFoods(items.value);
         }
         break;
       case 'Continuous Drugs':
         {
-          _drugsController.addcontinuousDrugs(items);
+          // ignore: invalid_use_of_protected_member
+          _drugsController.addcontinuousDrugs(items.value);
         }
         break;
       case 'Temporary Drugs':
         {
-          _drugsController.addtemporaryDrugs(items);
+          // ignore: invalid_use_of_protected_member
+          _drugsController.addtemporaryDrugs(items.value);
         }
         break;
       case 'Chronic Pathologies':
         {
-          _pathologiesController.addchronicPathologies(items);
+          // ignore: invalid_use_of_protected_member
+          _pathologiesController.addchronicPathologies(items.value);
         }
         break;
       case 'History Pathologies':
         {
-          _pathologiesController.addhistoryPathologies(items);
+          // ignore: invalid_use_of_protected_member
+          _pathologiesController.addhistoryPathologies(items.value);
         }
         break;
       case 'Surgeries':
         {
-          _surgeriesController.addSurgeries(items);
+          // ignore: invalid_use_of_protected_member
+          _surgeriesController.addSurgeries(items.value);
         }
         break;
     }
+    items.clear();
+    heightListview.value = 0.0;
+    Get.back();
   }
 
   deleteItem(index) {
-    _items.removeAt(index);
+    items.removeAt(index);
     if (items.length < 5) {
       if (heightListview > 0) {
         heightListview.value -= 40;
@@ -82,8 +89,8 @@ class DialogController extends GetxController {
     }
   }
 
-  showDialog({String title, String listName}) {
-    _listName.value = listName;
+  showDialog({String title, String listNamePage}) {
+    listName.value = listNamePage;
     Get.defaultDialog(
       title: title,
       barrierDismissible: false,
@@ -93,7 +100,7 @@ class DialogController extends GetxController {
       textCancel: 'Cancelar',
       onCancel: () {
         heightListview.value = 0.0;
-        _items.clear();
+        items.clear();
       },
       radius: 10,
       content: Column(

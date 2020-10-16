@@ -25,7 +25,7 @@ class PathologiesPage extends GetView<PathologiesController> {
                   heightTitle: 40,
                   onTap: () => _controllerDialog.showDialog(
                     title: 'Adicionar Doenças Crônicas',
-                    listName: 'Chronic Pathologies',
+                    listNamePage: 'Chronic Pathologies',
                   ),
                   // ignore: invalid_use_of_protected_member
                   itemList: _.chronicPathologies.value,
@@ -40,7 +40,7 @@ class PathologiesPage extends GetView<PathologiesController> {
                   heightTitle: 40,
                   onTap: () => _controllerDialog.showDialog(
                     title: 'Adicionar Histórico de Doenças',
-                    listName: 'History Pathologies',
+                    listNamePage: 'History Pathologies',
                   ),
                   itemList: Get.find<PathologiesController>()
                       .historyPathologies
