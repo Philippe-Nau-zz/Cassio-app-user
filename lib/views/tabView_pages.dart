@@ -13,7 +13,7 @@ class TabViewPages extends StatelessWidget {
       init: TabViewController(),
       builder: (_) => DefaultTabController(
         length: _items.length,
-        initialIndex: _.initialIndex,
+        initialIndex: _.initalIndex.value.toInt(),
         child: Scaffold(
           backgroundColor: Color(0xfff5f6fa),
           appBar: AppBar(

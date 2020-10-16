@@ -1,9 +1,11 @@
 import 'package:cassio_user_app/controllers/allergies_controller.dart';
+import 'package:cassio_user_app/controllers/dialog_controller.dart';
 import 'package:cassio_user_app/widgets/lisview_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AllergiesPage extends GetView<AllergiesController> {
+class AllergiesPage extends StatelessWidget {
+  final _controllerDialog = Get.put(DialogController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,22 +15,34 @@ class AllergiesPage extends GetView<AllergiesController> {
       child: LayoutBuilder(
         builder: (context, constraints) => Column(
           children: [
-            ListViewPages(
-              height: constraints.maxHeight * 0.47,
-              heightListview: constraints.maxHeight * 0.47 - 46,
-              heightTitle: 40,
-              onTap: () {},
-              itemList: [1, 2, 3, 4, 5, 6, 7],
-              title: 'Alergia a remédios',
+            GetX<AllergiesController>(
+              init: AllergiesController(),
+              builder: (_) => ListViewPages(
+                height: constraints.maxHeight * 0.47,
+                heightListview: constraints.maxHeight * 0.47 - 46,
+                heightTitle: 40,
+                onTap: () => _controllerDialog.showDialog(
+                  title: 'Adicionar Remédios Alérgicos',
+                  listName: 'Drug Allergies',
+                ),
+                // ignore: invalid_use_of_protected_member
+                itemList: _.allergiesDrugs.value,
+                title: 'Alergia a remédios',
+              ),
             ),
             SizedBox(height: 10),
-            ListViewPages(
-              height: constraints.maxHeight * 0.47,
-              heightListview: constraints.maxHeight * 0.47 - 46,
-              heightTitle: 40,
-              onTap: () {},
-              itemList: [1, 2, 3, 4, 5, 6, 7],
-              title: 'Alergia a alimentos',
+            Obx(
+              () => ListViewPages(
+                height: constraints.maxHeight * 0.47,
+                heightListview: constraints.maxHeight * 0.47 - 46,
+                heightTitle: 40,
+                onTap: () => _controllerDialog.showDialog(
+                    title: 'Adicionar Alimentos Alérgicos',
+                    listName: 'Food allergies'),
+                // ignore: invalid_use_of_protected_member
+                itemList: Get.find<AllergiesController>().allergiesFoods.value,
+                title: 'Alergia a alimentos',
+              ),
             ),
           ],
         ),

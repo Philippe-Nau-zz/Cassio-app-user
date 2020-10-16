@@ -16,7 +16,6 @@ class UserInfoCard extends StatelessWidget {
           Get.toNamed('/tabviewpages', arguments: 0);
         },
         child: Container(
-          height: 160,
           padding: EdgeInsets.all(10),
           child: Column(
             children: [
@@ -51,13 +50,15 @@ class UserInfoCard extends StatelessWidget {
                     ),
                     Expanded(
                       child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          '-O',
-                          style: TextStyle(
-                            color: Colors.blue[400],
-                            fontSize: 80,
-                            fontWeight: FontWeight.bold,
+                        alignment: Alignment.centerRight,
+                        child: FittedBox(
+                          child: Text(
+                            '-O',
+                            style: TextStyle(
+                              color: Colors.blue[400],
+                              fontSize: 80,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),

@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
 
 class TabViewController extends GetxController {
-  RxInt _initalIndex = 0.obs;
-  int get initialIndex => _initalIndex.value;
+  RxInt initalIndex = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
-    _initalIndex.value = Get.arguments;
+    initalIndex.value = Get.arguments;
   }
 }
