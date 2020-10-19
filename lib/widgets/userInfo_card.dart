@@ -20,31 +20,21 @@ class UserInfoCard extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 100,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Philippe Nau Rosa',
-                                  style: TextStyle(
-                                      color: Colors.grey[700],
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 5),
-                                Text('CPF: 000.000.000-00'),
-                                Text('Cidade/UF: Blumenau/SC'),
-                                Text('Nascimento: DD/MM/YYYY'),
-                              ],
-                            ),
+                          Text(
+                            'Philippe Nau Rosa',
+                            style: Theme.of(context).textTheme.headline2,
                           ),
+                          SizedBox(height: 5),
+                          Text('CPF: 000.000.000-00'),
+                          Text('Cidade/UF: Blumenau/SC'),
+                          Text('Nascimento: DD/MM/YYYY'),
                         ],
                       ),
                     ),
@@ -52,14 +42,8 @@ class UserInfoCard extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerRight,
                         child: FittedBox(
-                          child: Text(
-                            '-O',
-                            style: TextStyle(
-                              color: Colors.blue[400],
-                              fontSize: 80,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          child: Text('-O',
+                              style: Theme.of(context).textTheme.headline3),
                         ),
                       ),
                     )
@@ -68,7 +52,7 @@ class UserInfoCard extends StatelessWidget {
               ),
               Container(
                 alignment: Alignment.bottomCenter,
-                height: 25,
+                padding: EdgeInsets.only(top: 5),
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
@@ -76,13 +60,20 @@ class UserInfoCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Situação: Ativo'),
-                    Text('Último acesso: DD/MM/YYYY'),
-                  ],
-                ),
+                child: Get.width >= 340
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Situação: Ativo'),
+                          Text('Último acesso: DD/MM/YYYY'),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Text('Situação: Ativo'),
+                          Text('Último acesso: DD/MM/YYYY'),
+                        ],
+                      ),
               ),
             ],
           ),

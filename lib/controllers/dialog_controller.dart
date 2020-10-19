@@ -14,63 +14,74 @@ class DialogController extends GetxController {
 
   RxList items = [].obs;
   RxDouble heightListview = 0.0.obs;
-
+  RxBool isValid = true.obs;
   RxString listName = ''.obs;
 
   TextEditingController dialogTextController = TextEditingController();
 
   addItem() {
-    items.add(dialogTextController.text);
-    dialogTextController.clear();
+    if (dialogTextController.text.trim().isNotEmpty) {
+      isValid.value = true;
+      if (heightListview < 200) {
+        heightListview.value += 40;
+      }
+      items.add(dialogTextController.text);
+      dialogTextController.clear();
+    } else {
+      isValid.value = false;
+    }
   }
 
   addToListView() {
-    switch (listName.value) {
-      case 'Drug Allergies':
-        {
-          // ignore: invalid_use_of_protected_member
-          _allergiesController.addAllergiesDrugs(items.value);
-        }
-        break;
-      case 'Food allergies':
-        {
-          // ignore: invalid_use_of_protected_member
-          _allergiesController.addAllergiesFoods(items.value);
-        }
-        break;
-      case 'Continuous Drugs':
-        {
-          // ignore: invalid_use_of_protected_member
-          _drugsController.addcontinuousDrugs(items.value);
-        }
-        break;
-      case 'Temporary Drugs':
-        {
-          // ignore: invalid_use_of_protected_member
-          _drugsController.addtemporaryDrugs(items.value);
-        }
-        break;
-      case 'Chronic Pathologies':
-        {
-          // ignore: invalid_use_of_protected_member
-          _pathologiesController.addchronicPathologies(items.value);
-        }
-        break;
-      case 'History Pathologies':
-        {
-          // ignore: invalid_use_of_protected_member
-          _pathologiesController.addhistoryPathologies(items.value);
-        }
-        break;
-      case 'Surgeries':
-        {
-          // ignore: invalid_use_of_protected_member
-          _surgeriesController.addSurgeries(items.value);
-        }
-        break;
+    if (dialogTextController.text.trim().isNotEmpty || items.isNotEmpty) {
+      addItem();
+      switch (listName.value) {
+        case 'Drug Allergies':
+          {
+            // ignore: invalid_use_of_protected_member
+            _allergiesController.addAllergiesDrugs(items.value);
+          }
+          break;
+        case 'Food allergies':
+          {
+            // ignore: invalid_use_of_protected_member
+            _allergiesController.addAllergiesFoods(items.value);
+          }
+          break;
+        case 'Continuous Drugs':
+          {
+            // ignore: invalid_use_of_protected_member
+            _drugsController.addcontinuousDrugs(items.value);
+          }
+          break;
+        case 'Temporary Drugs':
+          {
+            // ignore: invalid_use_of_protected_member
+            _drugsController.addtemporaryDrugs(items.value);
+          }
+          break;
+        case 'Chronic Pathologies':
+          {
+            // ignore: invalid_use_of_protected_member
+            _pathologiesController.addchronicPathologies(items.value);
+          }
+          break;
+        case 'History Pathologies':
+          {
+            // ignore: invalid_use_of_protected_member
+            _pathologiesController.addhistoryPathologies(items.value);
+          }
+          break;
+        case 'Surgeries':
+          {
+            // ignore: invalid_use_of_protected_member
+            _surgeriesController.addSurgeries(items.value);
+          }
+          break;
+      }
+      items.clear();
+      heightListview.value = 0.0;
     }
-    items.clear();
-    heightListview.value = 0.0;
     Get.back();
   }
 
@@ -80,12 +91,6 @@ class DialogController extends GetxController {
       if (heightListview > 0) {
         heightListview.value -= 40;
       }
-    }
-  }
-
-  alterHeightListview() {
-    if (heightListview < 200) {
-      heightListview.value += 40;
     }
   }
 
@@ -106,29 +111,36 @@ class DialogController extends GetxController {
       content: Column(
         children: [
           Container(
-            height: 40,
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.symmetric(horizontal: 5),
             decoration: BoxDecoration(
                 color: Color(0xfff5f6fa),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               children: [
-                Expanded(
-                  child: TextField(
-                    controller: dialogTextController,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
+                Obx(
+                  () => Expanded(
+                    child: TextField(
+                      controller: dialogTextController,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.characters,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorText: isValid.value
+                            ? null
+                            : 'Este campo deve ser preenchido',
+                      ),
+                      onSubmitted: (value) {
+                        addItem();
+                      },
+                      style: TextStyle(fontSize: 16),
                     ),
-                    onSubmitted: (value) {
-                      addItem();
-                    },
-                    style: TextStyle(fontSize: 16),
                   ),
                 ),
                 InkWell(
                   onTap: () {
                     addItem();
-                    alterHeightListview();
                   },
                   child: Container(
                     padding: EdgeInsets.only(left: 5),

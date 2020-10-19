@@ -43,10 +43,7 @@ class ListViewPages extends StatelessWidget {
                 children: [
                   Text(
                     this.title,
-                    style: TextStyle(
-                      color: Colors.grey[700],
-                      fontSize: 18,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                   InkWell(
                     onTap: this.onTap,

@@ -13,6 +13,25 @@ class CassioUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            color: Colors.grey[700],
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+          headline2: TextStyle(
+            color: Colors.grey[700],
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+          headline3: TextStyle(
+            color: Colors.blue[400],
+            fontSize: 80,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       title: 'CASSIO User',
       getPages: AppPages.pages,
       initialRoute: Routes.HOME,

@@ -34,11 +34,7 @@ class CardMainGridView extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     this.title,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey[700],
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline2,
                   ),
                 ),
                 Container(
