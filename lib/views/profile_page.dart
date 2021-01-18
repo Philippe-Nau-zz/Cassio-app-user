@@ -10,7 +10,7 @@ class ProfilePage extends GetView<ProfileController> {
       width: double.infinity,
       height: double.infinity,
       color: Color(0xfff5f6fa),
-      margin: EdgeInsets.fromLTRB(20, 0, 20, 10),
+      margin: EdgeInsets.fromLTRB(24, 0, 24, 10),
       child: SingleChildScrollView(
         child: Column(
           children: [

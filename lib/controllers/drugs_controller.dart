@@ -16,4 +16,12 @@ class DrugsController extends GetxController {
       temporaryDrugs.add(element);
     });
   }
+
+  deletecontinuousDrugs(int index) {
+    continuousDrugs.removeAt(index);
+  }
+
+  deletetemporaryDrugs(int index) {
+    temporaryDrugs.removeAt(index);
+  }
 }

@@ -8,4 +8,8 @@ class SurgeriesController extends GetxController {
       surgeries.add(element);
     });
   }
+
+  deleteSurgeries(int index) {
+    surgeries.removeAt(index);
+  }
 }

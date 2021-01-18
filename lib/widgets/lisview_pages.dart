@@ -1,6 +1,9 @@
-import 'dart:ui';
-
+import 'package:cassio_user_app/controllers/allergies_controller.dart';
+import 'package:cassio_user_app/controllers/drugs_controller.dart';
+import 'package:cassio_user_app/controllers/pathologies_controller.dart';
+import 'package:cassio_user_app/controllers/surgeries_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ListViewPages extends StatelessWidget {
   final double height;
@@ -9,6 +12,7 @@ class ListViewPages extends StatelessWidget {
   final List<dynamic> itemList;
   final String title;
   final Function onTap;
+  final String listName;
 
   ListViewPages({
     this.height,
@@ -17,7 +21,14 @@ class ListViewPages extends StatelessWidget {
     this.title,
     this.itemList,
     this.onTap,
+    this.listName,
   });
+
+  final _allergiesController = Get.put(AllergiesController());
+  final _drugsController = Get.put(DrugsController());
+  final _pathologiesController = Get.put(PathologiesController());
+  final _surgeriesController = Get.put(SurgeriesController());
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -63,8 +74,74 @@ class ListViewPages extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 5),
                   padding: EdgeInsets.all(5),
                   alignment: Alignment.centerLeft,
-                  height: 50,
-                  child: Text(this.itemList[index].toString()),
+                  height: 30,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        this.itemList[index].toString(),
+                        style: TextStyle(
+                          color: Colors.blue[900],
+                        ),
+                      ),
+                      InkWell(
+                        child: Icon(
+                          Icons.remove_circle_outline,
+                          color: Colors.blue[200],
+                        ),
+                        onTap: () {
+                          switch (this.listName) {
+                            case 'Drug Allergies':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _allergiesController
+                                    .deleteAllergiesDrugs(index);
+                              }
+                              break;
+                            case 'Food allergies':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _allergiesController
+                                    .deleteAllergiesFoods(index);
+                              }
+                              break;
+                            case 'Continuous Drugs':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _drugsController.deletecontinuousDrugs(index);
+                              }
+                              break;
+                            case 'Temporary Drugs':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _drugsController.deletetemporaryDrugs(index);
+                              }
+                              break;
+                            case 'Chronic Pathologies':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _pathologiesController
+                                    .deletechronicPathologies(index);
+                              }
+                              break;
+                            case 'History Pathologies':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _pathologiesController
+                                    .deletehistoryPathologies(index);
+                              }
+                              break;
+                            case 'Surgeries':
+                              {
+                                // ignore: invalid_use_of_protected_member
+                                _surgeriesController.deleteSurgeries(index);
+                              }
+                              break;
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

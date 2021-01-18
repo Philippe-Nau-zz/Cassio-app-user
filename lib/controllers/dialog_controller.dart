@@ -124,6 +124,7 @@ class DialogController extends GetxController {
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.characters,
                       textInputAction: TextInputAction.done,
+                      autofocus: true,
                       decoration: InputDecoration(
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,

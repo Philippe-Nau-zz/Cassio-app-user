@@ -15,4 +15,12 @@ class PathologiesController extends GetxController {
       historyPathologies.add(element);
     });
   }
+
+  deletechronicPathologies(int index) {
+    chronicPathologies.removeAt(index);
+  }
+
+  deletehistoryPathologies(int index) {
+    historyPathologies.removeAt(index);
+  }
 }

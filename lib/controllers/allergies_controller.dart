@@ -15,4 +15,12 @@ class AllergiesController extends GetxController {
       allergiesFoods.add(element);
     });
   }
+
+  deleteAllergiesFoods(int index) {
+    allergiesFoods.removeAt(index);
+  }
+
+  deleteAllergiesDrugs(int index) {
+    allergiesDrugs.removeAt(index);
+  }
 }

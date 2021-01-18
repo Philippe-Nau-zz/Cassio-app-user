@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 class AllergiesPage extends StatelessWidget {
   final _controllerDialog = Get.put(DialogController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,6 +22,7 @@ class AllergiesPage extends StatelessWidget {
                 height: constraints.maxHeight * 0.47,
                 heightListview: constraints.maxHeight * 0.47 - 46,
                 heightTitle: 40,
+                listName: 'Drug Allergies',
                 onTap: () => _controllerDialog.showDialog(
                   title: 'Adicionar Remédios Alérgicos',
                   listNamePage: 'Drug Allergies',
@@ -36,6 +38,7 @@ class AllergiesPage extends StatelessWidget {
                 height: constraints.maxHeight * 0.47,
                 heightListview: constraints.maxHeight * 0.47 - 46,
                 heightTitle: 40,
+                listName: 'Food allergies',
                 onTap: () => _controllerDialog.showDialog(
                     title: 'Adicionar Alimentos Alérgicos',
                     listNamePage: 'Food allergies'),

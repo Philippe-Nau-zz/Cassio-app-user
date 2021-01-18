@@ -23,6 +23,7 @@ class DrugsPage extends GetView<DrugsController> {
                   height: constraints.maxHeight * 0.47,
                   heightListview: constraints.maxHeight * 0.47 - 46,
                   heightTitle: 40,
+                  listName: 'Continuous Drugs',
                   onTap: () => _controllerDialog.showDialog(
                       title: 'Adicionar Remédios Continuos',
                       listNamePage: 'Continuous Drugs'),
@@ -37,6 +38,7 @@ class DrugsPage extends GetView<DrugsController> {
                   height: constraints.maxHeight * 0.47,
                   heightListview: constraints.maxHeight * 0.47 - 46,
                   heightTitle: 40,
+                  listName: 'Temporary Drugs',
                   onTap: () => _controllerDialog.showDialog(
                       title: 'Adicionar Remédios temporarios',
                       listNamePage: 'Temporary Drugs'),

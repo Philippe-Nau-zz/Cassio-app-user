@@ -27,9 +27,10 @@ class HomePage extends GetView<HomePageController> {
                     SizedBox(height: 10),
                     UserInfoCard(),
                     Container(
-                        alignment: Alignment.center,
-                        height: constraints.maxHeight - 280,
-                        child: MainGridView()),
+                      alignment: Alignment.center,
+                      height: constraints.maxHeight - 280,
+                      child: MainGridView(),
+                    ),
                   ],
                 ),
               ),

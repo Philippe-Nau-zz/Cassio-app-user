@@ -23,6 +23,7 @@ class PathologiesPage extends GetView<PathologiesController> {
                   height: constraints.maxHeight * 0.47,
                   heightListview: constraints.maxHeight * 0.47 - 46,
                   heightTitle: 40,
+                  listName: 'Chronic Pathologies',
                   onTap: () => _controllerDialog.showDialog(
                     title: 'Adicionar Doenças Crônicas',
                     listNamePage: 'Chronic Pathologies',
@@ -34,20 +35,23 @@ class PathologiesPage extends GetView<PathologiesController> {
               },
             ),
             SizedBox(height: 10),
-            Obx(() => ListViewPages(
-                  height: constraints.maxHeight * 0.47,
-                  heightListview: constraints.maxHeight * 0.47 - 46,
-                  heightTitle: 40,
-                  onTap: () => _controllerDialog.showDialog(
-                    title: 'Adicionar Histórico de Doenças',
-                    listNamePage: 'History Pathologies',
-                  ),
-                  itemList: Get.find<PathologiesController>()
-                      .historyPathologies
-                      // ignore: invalid_use_of_protected_member
-                      .value,
-                  title: 'Histórico de doenças',
-                )),
+            Obx(
+              () => ListViewPages(
+                height: constraints.maxHeight * 0.47,
+                heightListview: constraints.maxHeight * 0.47 - 46,
+                heightTitle: 40,
+                listName: 'History Pathologies',
+                onTap: () => _controllerDialog.showDialog(
+                  title: 'Adicionar Histórico de Doenças',
+                  listNamePage: 'History Pathologies',
+                ),
+                itemList: Get.find<PathologiesController>()
+                    .historyPathologies
+                    // ignore: invalid_use_of_protected_member
+                    .value,
+                title: 'Histórico de doenças',
+              ),
+            ),
           ],
         ),
       ),
